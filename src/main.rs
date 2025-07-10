@@ -1,4 +1,5 @@
-// Import necessary modules: `io` for input and `Write` for flushing stdout
+// Import necessary modules: `io` and `write` to read input
+// and control console output
 use std::io::{self, Write};
 fn main() {
     // ==========================================================
@@ -61,11 +62,9 @@ fn main() {
     // TODO: Accept custom starting values from user
     // TODO: Add support for negative input with helpful error messaging
     // TODO: Provide option to generate sequence using recursion
-    // TODO: Visualize sequence using ASCII art or external crate
     // TODO: Accept range instead of just an upper limit
     // TODO: Move core logic to separate module
     // TODO: Benchmark performance with large inputs
-    // TODO: Allow user to select number of terms vs. value limit
     // TODO: Add colored CLI output using ANSI escape codes
 
 // ==========================================================
