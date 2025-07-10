@@ -13,23 +13,24 @@ fn main() {
     println!("=========================================================");
     println!();
    
-    //Using mutable variable to hold the user input
-    let mut input = String::new();
-
-    // Print the prompt (but do not move to a new line yet)
+   
+    // PROMPT user: "Enter a number limit:"
     print!("Enter a number limit: ");
 
-    // Flush stdout to ensure prompt appears before user input
+    // ENSURE prompt appears before user input
     io::stdout().flush().unwrap();
 
-    // We read user input from standard input into `input`
+    // READ user input into a variable as a string
+    let mut input = String::new();
+
+    // We read user input
     // The if reading fails, the program will panic with an error message
     io::stdin()
         .read_line(&mut input)
         .expect("Failed to read input");
 
-    // We trim whitespace and try to parse input into an unsigned 32-bit integer
-    // if parsing then fails, print an error and exit the program
+    // TRYING to convert input into an integer
+    // If it fails, print an error and exit the program
     let limit: u32 = match input.trim().parse(){
         Ok(num) => num,
         Err(_) => {
@@ -38,14 +39,15 @@ fn main() {
         }
     };
 
-    // Call the generator function (demonstrating ownership)
+    // CALL a function `generate_fibonacci(limit)` 
+    // and STORE the result in a variable (demonstrating ownership)
     let fb_sequence = generate_fibonacci(limit);
 
-   // Display the result
+   // Display "Fibonacci sequence up to {limit}:"
     println!();
     println!("Fabonacci sequence up to {}:", limit);
-    println!("{:?}", fb_sequence); // Print the vector as an array
-    println!(); //end of program
+    println!("{:?}", fb_sequence); // DISPLAY the full sequence as a list
+    println!(); //end of program, DISPLAY thank you message
     println!("Thank you for using the Fibonacci sequence generator!");
     println!("=========================================================");
 }
@@ -71,35 +73,34 @@ fn main() {
 
 
 // Function to generate Fibonacci sequence up to a given limit
-// Returns a vector of u32 integers
 fn generate_fibonacci(limit: u32) -> Vec<u32> {
 
     // ==========================================================
     // GENERATE_FIBONACCI FUNCTION
     // ==========================================================
 
-    // We first initialize a mutable vector with the first two Fibonacci numbers
+    //INITIALIZE a list called `sequence` with values [0, 1]
     let mut sequence: Vec<u32>  = vec![0, 1];
 
-    // Continue generating numbers until the next value exceeds the limit
+    // Continue generating numbers WHILE last number in `sequence` is less than or equal to `limit`
     while let Some(&last) = sequence.last() {
-        // Get the second-to-last number safely (with fallback to 0)
+
+        //GET second-to-last number in `sequence`
         let second_last: &u32 = sequence.get(sequence.len().saturating_sub(2)).unwrap_or(&0);
 
-        // Here we compute the next Fibonacci number
+        // CALCULATE next number by adding last and second-to-last
         let next: u32 = last + second_last;
 
-        // Stop if the next number exceeds the limit
+        // Stop IF next number is greater than limit THEN
         if next > limit {
-            break;
+            break; //Break loop
         }
 
-        //Add a new number to the sequence
-        // We use `push` to add the next number to the end of the vector
+        //Add the NEXT number to the sequence
         sequence.push(next);
     }
 
-    // Return the completed Fibonacci sequence
+    // RETURN `sequence`
     sequence
 
 }
