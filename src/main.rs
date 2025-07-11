@@ -30,7 +30,7 @@ fn main() {
         .expect("Failed to read input");
 
     // TRYING to convert input into an integer
-    // If it fails, print an error and exit the program
+    // If it fails, print an error and exit the program gracefully
     let limit: u32 = match input.trim().parse(){
         Ok(num) => num,
         Err(_) => {
