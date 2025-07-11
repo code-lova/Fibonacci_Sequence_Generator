@@ -10,7 +10,7 @@ The purpose of writing this software was to gain hands-on experience with:
 
 This project represents my foundational step in learning Rust, building confidence to create more complex CLI tools and potentially web or systems-level applications in the future.
 
-[Software Demo Video](http://youtube.link.goes.here)
+[Software Demo Video](https://www.youtube.com/watch?v=sS4pYQmd34w)
 
 # Development Environment
 
